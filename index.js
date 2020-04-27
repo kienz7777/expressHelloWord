@@ -4,23 +4,29 @@ var port = 3000;
 
 const bodyParser = require('body-parser')
 
+var low = require("lowdb");
+var FileSync = require('lowdb/adapters/FileSync');
+var adapter = new FileSync('db.json');
+var db = low(adapter);
+
+var shortid = require('shortid');
+
+// Set some defaults (required if your JSON file is empty)
+db.defaults({ users: []})
+  .write()
+
 app.set('view engine', 'pug');
 app.set('views', './views');
 
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
-var  users = [
-    {id : 1, name : 'kien'},
-    {id : 2, name : 'ko'},
-    {id : 3, name : 'den'}
-   
-]
+
 app.get('/', (req, res) => { res.render('index', { name: 'kienz' }) });
 app.get('/users', (req, res) => {
     res.render('users/index',
         {
-            users: users
+            users: db.get('users').value()
         })
 });
 
@@ -46,9 +52,21 @@ app.get('/users/create',  (req,res) => {
     });
 });
 
+app.get('/users/:id',  (req,res) => {
+    var id = req.params.id;
+
+    var user = db.get('users').find({ id : id}).value();
+
+    res.render('users/view',{
+        user : user
+    });
+});
+
 app.post('/users/create',  (req,res) => {
 
-  users.push(req.body);
+  req.body.id = shortid.generate();
+
+  db.get('users').push(req.body).write();
 
   res.redirect("/users");
 });
