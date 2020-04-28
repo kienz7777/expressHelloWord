@@ -1,4 +1,5 @@
 var db = require('../db');
+var shortid = require('shortid')
 
 module.exports.index = (req, res) => {
     res.render('users/index',
@@ -21,7 +22,7 @@ module.exports.search = (req,res) => {
 }
 
 module.exports.create = (req,res) => {
-
+    console.log(req.cookies);
     res.render('users/create', {
       
     });
@@ -44,4 +45,4 @@ module.exports.postCreate = (req,res) => {
     db.get('users').push(req.body).write();
   
     res.redirect("/users");
-  }
+}
