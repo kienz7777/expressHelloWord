@@ -17,6 +17,6 @@ app.use(express.static('public'));
 
 app.get('/', (req, res) => { res.render('index', { name: 'kienz' }) });
 
-app.use('/users',userRoute);
+app.use('/users',userRoute);    //link
 
 app.listen(port, () => { console.log('Server listening on port ' + port); })
