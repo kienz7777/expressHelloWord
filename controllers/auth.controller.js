@@ -16,7 +16,7 @@ module.exports.postLogin =  (req, res) => {
             errors : [
                 'User does not exists'
             ],
-            value : req.body 
+            values : req.body 
         });
         return;
     }
@@ -26,10 +26,11 @@ module.exports.postLogin =  (req, res) => {
             errors : [
                 'Wrong password'
             ],
-            value : req.body 
+            values : req.body 
         });
         return;
     }
 
+    res.cookie('userId', user.id);
     res.redirect('/users');
 };
