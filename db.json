@@ -20,7 +20,9 @@
     {
       "name": "fizz",
       "phone": "012486544",
-      "id": "EMt2N6UZl"
+      "id": "EMt2N6UZl",
+      "email": "kienvu729@gmail.com",
+      "password": "123"
     }
   ]
 }
