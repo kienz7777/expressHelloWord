@@ -4,6 +4,8 @@ var cookieParser = require('cookie-parser');
 
 var userRoute = require('./routes/user.route');
 var authRoute = require('./routes/auth.route');
+var productRoute = require('./routes/product.route');
+
 var authMiddleware = require('./middleware/auth.middleware');
 
 var port = 3000;
@@ -23,5 +25,6 @@ app.get('/', (req, res) => { res.render('index', { name: 'kienz' }) });
 
 app.use('/users', authMiddleware.requireAuth, userRoute);    //link
 app.use('/auth', authRoute);
+app.use('/products',productRoute);
 
 app.listen(port, () => { console.log('Server listening on port ' + port); })
