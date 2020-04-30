@@ -30,4 +30,4 @@ block content
                         h5.card-title= product.name
                         p.card-text= product.description
                         .protect
-                            a.btn.btn-primary(href="https://www.youtube.com/" style="position: absolute; top: 400px;") Add to cart
+                            a.btn.btn-primary(href="/cart/add/" + product.id , style="position: absolute; top: 400px;") Add to cart
