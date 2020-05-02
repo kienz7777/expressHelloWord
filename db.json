@@ -185,6 +185,17 @@
         "7005bd87-5a2c-47ba-b92c-33e9636460d2": 1,
         "e0d1f93b-3908-4e63-a243-9a84abb265af": 1
       }
+    },
+    {
+      "id": "g8lxl83Ib"
+    }
+  ],
+  "transfers": [
+    {
+      "id": "EnVXtk3dX",
+      "amount": 300000,
+      "accountId": "15646",
+      "userId": "EMt2N6UZl"
     }
   ]
 }
