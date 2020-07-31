@@ -19,4 +19,4 @@ module.exports.postCreate =  (req,res,next) => {
     db.get('transfers').push(data).write();
 
     res.redirect('/transfer/create');
-};
+}; 

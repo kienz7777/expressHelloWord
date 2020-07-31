@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-var csurf = require('csurf');
+
 
 var userRoute = require('./routes/user.route');
 var authRoute = require('./routes/auth.route');
@@ -24,7 +24,7 @@ app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 app.use(cookieParser('avagagaas1000'));
 app.use(sessionMiddleware);
-app.use(csurf({cookie: true}));
+
 
 app.use(express.static('public'));
 
